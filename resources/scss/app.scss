@@ -1,0 +1,66 @@
+@use "./snippets/formStyle" as *;
+@import "~bootstrap/scss/bootstrap";
+
+#app,
+body {
+    background-color: rgb(47, 47, 47);
+}
+.page-link {
+    color: black;
+    .active {
+        color: white;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.back-arrow {
+    font-size: 1rem;
+    color: white;
+}
+
+.active {
+    .page-link {
+        background-color: rgb(38, 38, 38);
+        border-color: white;
+    }
+}
+.card {
+    background-color: rgb(146, 146, 146);
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 500px;
+    margin: 0 auto;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.buttons {
+    width: 335px;
+    margin: 0 auto;
+}
+
+.error {
+    font-size: 15px;
+    background-color: white;
+    color: red;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+}
+
+.main-show {
+    padding: 2rem 0 5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

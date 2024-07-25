@@ -1,0 +1,36 @@
+.form-content {
+    margin: 1rem;
+    color: white;
+    font-size: 25px;
+}
+
+.form {
+    background-color: rgba(55, 0, 0, 0.763);
+    padding: 2rem;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    .button {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+    input,
+    textarea,
+    select {
+        padding: 0.5rem;
+        border-radius: 10px;
+        box-shadow: none;
+        border: none;
+        width: 100%;
+    }
+}
+
+.error {
+    font-size: 15px;
+    background-color: white;
+    color: red;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+}
