@@ -10,6 +10,9 @@
                             <h2>{{ $project->title }}</h2>
                             <h5>{{ $project->description }}</h5>
                             <h5>Categoria: {{ $project->type?->title ?: 'Categoria non specificata' }}</h5>
+                            <h5>Technologies
+                                @dd($project->technology)
+                            </h5>
                             <p>Creato il: {{ $project->created_at }}</p>
                         </div>
                         <div class="image col">

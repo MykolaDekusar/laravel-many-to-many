@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Support\Str;
 use App\Models\User;
@@ -51,7 +52,8 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view('admin.posts.show', compact('project'));
+        $technologies = Technology::all();
+        return view('admin.posts.show', compact('project', 'technologies'));
     }
 
     /**
