@@ -27,6 +27,7 @@
                                     <p>
                                         @foreach ($project->technologies as $tech)
                                             {{ $tech->title }}
+                                            <br>
                                         @endforeach
                                     </p>
                                 @else

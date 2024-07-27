@@ -37,13 +37,19 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
+
         $data = $request->validated();
         // creo uno slug dal titolo e lo assegno al data
-        $data['slug'] = Str::of($data['title'])->slug('-');
+        $data['slug'] = Str::of($data['title'])->slug();
+        //
 
         $project = new Project();
         $project->fill($data);
         $project->save();
+        // utilizzo dopo che il project è stato salvato in modo da avere l'id
+        if ($request->has('techs')) {
+            $project->technologies()->attach($request->techs);
+        };
 
         return redirect()->route('admin.projects.index')->with('message', 'Articolo creato correttamente');
     }

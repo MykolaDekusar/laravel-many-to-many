@@ -17,6 +17,7 @@
                                 <p class="error">{{ $message }}</p>
                             @enderror
                         </div>
+
                         <div class="form-content">
                             <label for="description">Description: </label>
                             <input type="text" name="description" value="{{ old('description') }}">
@@ -24,6 +25,7 @@
                                 <p class="error">{{ $message }}</p>
                             @enderror
                         </div>
+
                         <div class="form-content">
                             <label for="type">Type: </label>
                             <select name="type_id" id="type_id">
@@ -45,14 +47,13 @@
                                 @foreach ($techs as $tech)
                                     <div class="col-4 d-flex flex-column justfy-content-center align-items-center">
                                         <span class="mb-2">{{ $tech->title }}</span>
-                                        <input class="checkbox" name="{{ $tech->title }}" type="checkbox"
-                                            value="{{ $tech->id }}">
+                                        {{-- techs[] le parentesi permettono di inviare un array di checkbox se selezionato piu di 1 --}}
+                                        <input class="checkbox" name="techs[]" type="checkbox" value="{{ $tech->id }}"
+                                            {{-- verifico se i tech selezionati prima sono presenti nell'array techs, setto il controllo old a [] per evitare l'errore iniziale --}}
+                                            {{ in_array($tech->id, old('techs', [])) ? 'checked' : '' }}>
                                     </div>
                                 @endforeach
                             </div>
-                            @error('technology_id')
-                                <p class="error">{{ $message }}</p>
-                            @enderror
                             <hr>
                         </div>
 
@@ -64,6 +65,7 @@
                                 <p class="error">{{ $message }}</p>
                             @enderror
                         </div>
+
                         <div class="button mt-4">
                             <button class="btn btn-success">Create Post</button>
                         </div>
