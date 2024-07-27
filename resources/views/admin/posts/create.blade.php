@@ -5,11 +5,13 @@
             <div class="col-12 mt-2">
                 <div class="form">
                     <div class="px-3">
+                        <!-- Back btn -->
                         <a class="back-arrow btn btn-secondary go-back" href="{{ route('admin.projects.index') }}"><i
                                 class="fa-solid fa-arrow-left"></i></a>
                     </div>
                     <form action="{{ route('admin.projects.store') }}" method="POST">
                         @csrf
+                        <!-- Title -->
                         <div class="form-content">
                             <label for="title">Title: </label>
                             <input type="text" name="title" value="{{ old('title') }}">
@@ -17,7 +19,7 @@
                                 <p class="error">{{ $message }}</p>
                             @enderror
                         </div>
-
+                        <!-- Description -->
                         <div class="form-content">
                             <label for="description">Description: </label>
                             <input type="text" name="description" value="{{ old('description') }}">
@@ -25,7 +27,7 @@
                                 <p class="error">{{ $message }}</p>
                             @enderror
                         </div>
-
+                        <!-- Type -->
                         <div class="form-content">
                             <label for="type">Type: </label>
                             <select name="type_id" id="type_id">
@@ -39,7 +41,7 @@
                                 <p class="error">{{ $message }}</p>
                             @enderror
                         </div>
-
+                        <!-- Technology -->
                         <div class="form-content">
                             <label for="technology_id">Technologies: </label>
                             <hr>
@@ -56,7 +58,7 @@
                             </div>
                             <hr>
                         </div>
-
+                        <!-- Image -->
                         <div class="form-content">
                             <label for="thumb">Image URL :</label>
                             <input type="text" name="image"
@@ -65,7 +67,7 @@
                                 <p class="error">{{ $message }}</p>
                             @enderror
                         </div>
-
+                        <!-- Create btn -->
                         <div class="button mt-4">
                             <button class="btn btn-success">Create Post</button>
                         </div>

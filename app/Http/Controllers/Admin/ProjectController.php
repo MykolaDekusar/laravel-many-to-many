@@ -51,7 +51,7 @@ class ProjectController extends Controller
             $project->technologies()->attach($request->techs);
         };
 
-        return redirect()->route('admin.projects.index')->with('message', 'Articolo creato correttamente');
+        return redirect()->route('admin.projects.index')->with('message', 'Project successfully created');
     }
 
     /**
@@ -69,7 +69,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.posts.edit', compact('project', 'types'));
+        $techs = Technology::all();
+        return view('admin.posts.edit', compact('project', 'types', 'techs'));
     }
 
     /**
@@ -78,7 +79,11 @@ class ProjectController extends Controller
     public function update(UpdateProjectRequest $request, Project $project)
     {
         $data = $request->validated();
+        // creo uno slug dal titolo modificato e lo assegno al data
+        $data['slug'] = Str::of($data['title'])->slug();
         $project->update($data);
+        // aggiorno i tag che ho modificato
+        $project->technologies()->sync($request->techs);
         return redirect()->route('admin.projects.show', $project);
     }
 
@@ -87,7 +92,14 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        /**
+         * per eliminare i techs dalla tabella pivo abbiamo settato il cascade on delete nelle migrations
+         * ma se non fosse così abbiamo 2 modi per eliminare le associazioni che sono:
+         * 1) $projects->technologies()->detach();
+         * 2) $projects->technologies()->sync([]); sync di un array vuoto
+         */
+
         $project->delete();
-        return redirect()->route('admin.projects.index');
+        return redirect()->route('admin.projects.index')->with('message', 'Project successfully deleted');
     }
 }
