@@ -21,12 +21,12 @@
                         <div class="image">
                             <img src="{{ $data->image }}" alt="">
                         </div>
-                        <div class="d-flex buttons justify-content-between">
-                            <a class="btn btn-success" href="{{ route('admin.projects.show', $data) }}">Details</a>
+                        <a class="btn btn-success col-2" href="{{ route('admin.projects.show', $data) }}">Details</a>
+                        <div class="delete-index">
                             <form action="{{ route('admin.projects.destroy', $data) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger">Delete Post</button>
+                                <button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
                             </form>
                         </div>
                     </div>

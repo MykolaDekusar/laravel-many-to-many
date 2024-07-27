@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Type;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
 class TypeSeeder extends Seeder
@@ -14,6 +15,8 @@ class TypeSeeder extends Seeder
      */
     public function run(): void
     {
+        Schema::disableForeignKeyConstraints();
+        Type::truncate();
         $types = ['Funny', 'Sad', 'Intriguing', 'Mysterious', 'Scary', 'Lonely', 'Angry'];
         foreach ($types as $type) {
             $project = new Type();
@@ -21,5 +24,6 @@ class TypeSeeder extends Seeder
             $project->slug = Str::of($type)->slug();
             $project->save();
         }
+        Schema::enableForeignKeyConstraints();
     }
 }
