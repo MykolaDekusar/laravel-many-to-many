@@ -15,7 +15,8 @@
                         @endif
                         <div class="d-flex justify-content-between align-items-center">
                             {{ __('You are logged in!') }}
-                            <a type="button" class="btn btn-success" href="{{ route('admin.projects.index') }}">Vai alla
+                            <a type="button" class="btn btn-success mx-2" href="{{ route('admin.projects.index') }}"> Vai
+                                alla
                                 lista</a>
                         </div>
                     </div>
